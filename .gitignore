@@ -1,0 +1,52 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+node_modules
+.DS_Store
+dist
+dist-ssr
+coverage
+*.local
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+*.tsbuildinfo
+
+.eslintcache
+
+# Cypress
+/cypress/videos/
+/cypress/screenshots/
+
+# Vitest
+__screenshots__/
+
+# Vite
+*.timestamp-*-*.mjs
+
+# 会话数据：本地用户数据，不进版本库
+server/sessions/
+
+# Agent 运行产物：每次试跑写出的文件，属于运行时数据
+server/agent/workspace/
+
+# 环境变量与密钥：绝不提交
+# server/.env 含数据库口令、JWT 签名密钥、各厂商 API key，泄露即事故
+.env
+.env.*
+*.env
+!.env.example

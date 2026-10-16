@@ -1,0 +1,72 @@
+/* 全局基础样式：给常驻的共用背景层留出铺满视口的空间 */
+
+html {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100%;
+  color: var(--text);
+  overflow-x: hidden;
+  /*
+    背景 canvas 初始化前的兜底底色。
+    要和 App.vue 里 CRTWarp 的 background-color 保持一致，
+    否则加载瞬间会闪一下另一种颜色（现在是白色主题）。
+  */
+  background-color: #fff;
+  font-family:
+    system-ui,
+    -apple-system,
+    'Segoe UI',
+    'Microsoft YaHei',
+    sans-serif;
+  font-size: 15px;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+
+/*
+  用 min-height 而不是 height：页面内容再长也能正常滚动，
+  背景层是 position: fixed，滚动时保持不动。
+*/
+#app {
+  /* 给不支持 dvh 的浏览器一个兜底值，支持的原样覆盖 */
+  min-height: 100vh;
+  min-height: 100dvh;
+}
+
+/*
+  设计令牌。
+
+  颜色分两组：
+    --text*  压在 CRT 背景之上。背景现在是浅色（白底 + 浅蓝波），所以用深色字。
+    --ink*   压在白色面板（侧边栏、气泡、卡片）之上，也是深色。
+  两组当前取值接近，分开是为了以后换深色背景时只改 --text* 一处。
+
+  尺寸：
+    --nav-h  顶部导航栏高度，App.vue 的内容留白和侧边栏的 top 都依赖它。
+*/
+:root {
+  --text: #241a33;
+  --text-dim: rgba(36, 26, 51, 0.62);
+
+  --glass: rgba(255, 255, 255, 0.3);
+  --glass-border: rgba(255, 255, 255, 0.55);
+
+  --ink: #1b1425;
+  --ink-dim: #6d6580;
+
+  --accent: #8b3fd6;
+  --accent-soft: rgba(139, 63, 214, 0.12);
+  --accent-ring: rgba(139, 63, 214, 0.42);
+  --danger: #d93a56;
+
+  --radius: 16px;
+  --radius-sm: 10px;
+  --sidebar-w: 280px;
+  --nav-h: 58px;
+  --shadow: 0 8px 26px rgba(5, 1, 10, 0.18);
+  --ease: cubic-bezier(0.4, 0, 0.2, 1);
+}
